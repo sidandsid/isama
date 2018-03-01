@@ -1,0 +1,112 @@
+@mixin content-width(){
+	margin: 0 auto;
+	width: 1160px;
+
+	@media screen and (max-width: 1250px){
+		width: 85%;					
+	}
+}
+
+@mixin size($width, $height){
+    width: $width;
+    height: $height;
+}
+
+@mixin flex($flex-direction, $justify-content){
+	display: flex;	
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	flex-direction: $flex-direction;
+	justify-content: $justify-content;
+}
+
+@mixin absolute(){
+	position: absolute;
+	content: '';
+}
+
+@mixin background($img){
+	background-image: url('#{$img-path}/#{$img}');
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/* Font settings */
+@mixin font($font-size, $font-weight, $color, $font-family){
+	font-size: $font-size;
+	font-weight: $font-weight;	
+	color: $color;	
+	font-family: $font-family;
+}
+
+@mixin title-h2(){
+	font-size: 44px;
+	font-family: $font-light; 
+	font-family: OpenSans, sans-serif; 
+	color: $main-grey;
+	cursor: default; 
+
+	@media screen and (max-width: 640px){
+		text-align: center;
+	}
+}
+
+@mixin title-h3(){
+	font-size: 24px;
+	font-weight: bold;
+	font-family: $font-bold; 
+	color: $main-grey;
+	cursor: default; 
+}
+
+@mixin text(){
+	font-size: 16px;
+	font-weight: lighter;
+	font-family: $font-light; 
+	color: $main-grey;
+	hyphens: auto;
+	cursor: default;
+}
+
+/* Animation */
+@mixin box-animation($animation-name, $animation-duration){
+	animation-name: $animation-name;
+	animation-duration: $animation-duration;
+	animation-iteration-count: infinite;
+}
+
+@mixin hover-default(){
+	transition: .4s;
+
+	&:hover{
+		color: $blue;
+		fill: $blue;
+		transition: .4s;
+	}
+}
+
+/* Mixins for responsive */
+@mixin breakpoint($point){
+   	@if $point == laptop{
+     	@media (max-width: 1200px) and (min-width: 1025px) { @content ; }
+  	}
+  	
+  	@else if $point == tablet{
+    	@media (max-width: 1024px) and (min-width: 769px) { @content ; }
+  	}
+  	
+  	@else if $point == tablet-small{
+    	@media (max-width: 768px) { @content ; }
+  	}
+
+  	@else if $point == mobile{
+     	@media (min-width: 320px) and (max-width: 480px) { @content ; }
+  	} 
+}
+
+@mixin no-translate($point){
+	@include breakpoint($point){
+		transform: translate(0, 0);
+	}
+}

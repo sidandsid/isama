@@ -1,0 +1,324 @@
+.projects-section{	
+	@include flex(row, center);	
+	@include background('projects-bg.png');		
+	background-size: cover;	
+	padding-top: 95px;
+}
+
+.projects-content{	
+	@include content-width();
+	@include flex(column, center);
+}	
+
+/* Menu header with logo and title */
+.projects-header{
+	@include flex(row, center);	
+	margin-bottom: 80px;
+}
+
+.projects-header__logo{	
+	@include size(139px, 111px);
+	@include background('projects-logo.png');
+	transform: translate(-17%, 0%);
+
+	&:before{
+		@include absolute;
+		@include size(15px, 15px);		
+		border-radius: 50%;
+		background-color: $blue;
+		transform: translate(64px, 26px);
+		animation: buble-1 3s infinite linear;
+	}
+
+	@keyframes buble-1{
+		0%{
+			transform: translate(64px, 26px);
+			background-color: #ffffff;
+		}		
+		
+		25%{
+			transform: translate(53px, 10px);
+			@include size(17px, 17px);		
+		}
+
+		70%{
+			transform: translate(73px, -23px);	
+			background-color: $blue;	
+		}
+
+		100%{
+			transform: translate(47px, -50px);
+			@include size(23px, 23px);	
+			background-color: $blue;
+		}
+	}
+
+	&:after{
+		@include absolute;
+		@include size(15px, 15px);			
+		border-radius: 50%;
+		background-color: #44b0db;
+		transform: translate(42px, 48px);
+		animation: buble-2 3s infinite linear;
+	}	
+	
+	@keyframes buble-2{
+		0%{
+			background-color: #ffffff;
+			transform: translate(42px, 48px);
+		}
+		
+		35%{
+			transform: translate(72px, 28px);
+			@include size(17px, 17px);	
+		}
+
+		70%{
+			transform: translate(54px, 8px);
+		}
+
+		100%{
+			transform: translate(75px, -23px);			
+		}
+	}
+	
+	@media screen and (max-width: $no-animation){
+		@include size(138px, 151px);
+		@include background('projects-logo-full.png');
+
+		&:before, &:after{
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 720px){
+		transform: translate(0%, 0%);
+	}
+}
+
+.projects-header__logo_buble{
+	position: absolute;
+	@include size(12px, 12px);	
+	border-radius: 50%;
+	background-color: #aecfe8;
+	transform: translate(70px, 65px);
+	animation: buble-3 3s infinite linear;
+	animation-delay: .5s;
+
+	@keyframes buble-3{
+		0%{
+			transform: translate(70px, 65px);	
+		}
+		
+		25%{
+			transform: translate(54px, 44px);
+			background-color: #57bfe9;
+		}
+
+		50%{
+			transform: translate(74px, 32px);	
+		}
+
+		75%{
+			transform: translate(58px, 12px);	
+		}
+
+		100%{			
+			transform: translate(71px, -30px);		
+		}
+	}
+	
+	@media screen and (max-width: $no-animation){
+		display: none;		
+	}
+}
+
+.projects-header__title{
+	@include title-h2();	
+	transform: translate(2%, 2%);
+
+	@media screen and (max-width: 720px){
+		transform: translate(0px, 10px);
+	}
+}
+
+.projects-header__subtitle{
+	display: block;
+	@include text();
+	line-height: 150%;
+}
+
+/* Filter buttons/navigation */
+.projects-filter{	
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	max-width: 765px;
+	margin-bottom: 40px;
+}
+
+.projects-filter__button{	
+	display: block;
+	@include font(15px, bold, $light-grey, $font-light);
+	height: 45px;
+	border: 2px solid $light-grey;
+	border-radius: 7px;
+	cursor: pointer;
+	transition: .4s;
+	background-color: $bg-grey;
+	margin: 0 13px 10px 0;
+
+	&:hover{
+		@include font(15px, bold, $main-grey, $font-bold);
+		border: transparent;
+		background-color: #ffffff;
+		transition: .4s;
+	}
+
+	@media screen and (max-width: 840px){
+		margin: 0px 5px 15px 5px;
+	}
+
+	@media screen and (max-width: $no-animation){
+		&:hover{
+			@include font(15px, bold, $light-grey, $font-light);
+			background-color: $bg-grey;
+			border: 2px solid $light-grey;
+		}
+	}
+}
+
+.projects-filter__button_1{
+	width: 123px;
+}
+
+.projects-filter__button_2{
+	width: 157px;
+}
+
+.projects-filter__button_3{
+	width: 157px;
+}
+
+.projects-filter__button_4{
+	width: 157px;
+}
+
+.projects-filter__button_5{
+	width: 103px;
+}
+
+/* default MixItUp plugin class applied to the active filter button*/
+.mixitup-control-active{
+	@include font(15px, bold, $main-grey, $font-bold);
+	background-color: #ffffff;
+	border: transparent;
+}
+
+/* Container with project boxes */
+.projects-container{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 100px;
+
+	@media screen and (max-width: 1024px){
+		margin-bottom: 50px;
+	}
+}
+
+.projects-box{
+	@include size(278px, 285px);
+	@include flex(column, space-around);
+	background-color: #ffffff;		
+	border-radius: 5px;
+	padding-top: 5px;
+	margin-bottom: 17px;
+
+	&:after{
+		@include absolute();
+		@include size(2px, 64px);
+		background-color: #f5f5f5;
+		transform: translate(0px, 108px);	
+	}
+
+	@media screen and (min-width: 640px){
+		margin-right: 12px;
+	}
+}
+
+.projects-box__image{
+	@include size(252px, 208px);
+	@include flex(row, space-around);	
+	background-color: #f5f5f5;
+	border-radius: 5px;	
+}
+
+.projects-box__info{
+	@include size(100%, 30px);
+	@include flex(row, space-around);
+}
+
+.projects-box__links{
+	&:hover{
+		.projects-box__links_hidden{	
+			opacity: 1;
+			transition: .4s linear;
+		}
+	}
+
+	@media screen and (max-width: $no-animation){
+		&:hover{
+			.projects-box__links_hidden{	
+				opacity: 0;				
+			}
+		}
+	}
+}
+
+.projects-box__links-icon{
+	@include size(23px, 23px);
+	fill: $light-grey;
+	cursor: pointer;
+	transition: .4s linear;	
+
+	&:hover{
+		fill: $blue;
+		transition: .4s linear;
+	}
+
+	@media screen and (max-width: $no-animation){
+		&:hover{
+			fill: $light-grey;
+		}		
+	}
+}
+
+.projects-box__links-icon_link{	
+	transform: translate(5px, -3px);
+}
+
+.projects-box__links-icon_plus{
+	transform: translate(-5px, -3px);
+}
+
+.projects-box__links-icon_facebook,
+.projects-box__links-icon_twitter,
+.projects-box__links-icon_linkedin{
+	fill: lighten($blue, 20%);
+
+	&:hover{
+		fill: $blue;
+	}
+}
+
+.projects-box__links_hidden{	
+	position: absolute;
+	@include size(100px, 25px);
+	@include flex(row, space-between);	
+	transform: translate(-26px, -60px);	
+	opacity: 0;
+	transition: .4s linear;
+}

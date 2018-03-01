@@ -1,0 +1,109 @@
+.map-content{
+	@include size(100%, 500px);
+}
+
+#map{
+	@include size(100%, 100%);
+}
+
+.map-contact{	
+	@include size(210px, 63px);
+	@include flex(row, space-between);
+	margin: 0 auto;	
+	transform: translate(0px, -135px);
+}
+
+.map-contact__item{
+	@include size(63px, 63px);
+	@include flex(row, space-around);
+	background-color: #ffffff;
+	border: 2px solid $light-grey;
+	border-radius: 8px;
+	transition: .4s;
+
+	&:hover{
+		background-color: $blue;
+		border-color: $blue;
+		transition: .4s;
+
+		.map-contact__icon{
+			fill: #ffffff;
+			transition: .4s;
+		}
+	}
+
+	@media screen and (max-width: $no-animation){
+		&:hover{
+			background-color: #ffffff;
+			border: 2px solid $light-grey;		
+
+			.map-contact__icon{
+				fill: $main-grey;			
+			}
+		}
+	}
+}
+
+.map-contact__icon{
+	fill: $main-grey;
+	transition: .4s;
+	cursor: pointer;
+}
+
+.map-contact__icon_location{
+	@include size(48px, 58px);
+}
+
+.map-contact__icon_email{
+	@include size(46px, 39px);
+}
+
+.map-contact__icon_phone{
+	@include size(40px, 50px);
+}
+
+/* hovers for location, phone and email pop-ups */
+.map-contact__box_location{
+	&:hover{
+		.contact-popup__map_location,
+		.contact-triangle__map_location{
+			visibility: visible;
+			transition: .4s;
+		}
+	}
+}
+
+.map-contact__box_email{
+	&:hover{
+		.contact-popup__map_email,
+		.contact-triangle__map_email{
+			visibility: visible;
+			transition: .4s;
+		}
+	}
+}
+
+.map-contact__box_phone{
+	&:hover{
+		.contact-popup__map_phone,
+		.contact-triangle__map_phone{
+			visibility: visible;
+			transition: .4s;
+		}
+	}
+}
+
+.contact-popup__map_location,
+.contact-popup__map_email,
+.contact-popup__map_phone{	
+	height: 80px;		
+	transform: translate(-80px, -89px);	
+	transition: .4s;
+}
+
+.contact-triangle__map_location,
+.contact-triangle__map_email,
+.contact-triangle__map_phone{
+	transform: translate(17px, -11px);	
+	transition: .4s;
+}

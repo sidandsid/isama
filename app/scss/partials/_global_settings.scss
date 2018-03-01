@@ -1,0 +1,140 @@
+*{
+	box-sizing: border-box;
+	outline: 0px solid grey;	
+}
+
+body{
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+h1, h2, h3 {
+	margin: 0;
+}
+
+a{
+	text-decoration: none;	
+}
+
+ul, li{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.global-wrapper{
+	max-width: 2000px;
+}
+
+/* Importing fonts */
+@font-face{
+	font-family: OpenSans-Regular;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+@font-face{
+	font-family: OpenSans-Bold;
+    src: url(../fonts/OpenSans-Bold.ttf);
+}
+
+@font-face{
+	font-family: OpenSans-Light;
+    src: url(../fonts/OpenSans-Light.ttf);
+}
+
+/* Social-media links - basics */
+.social-media{
+	@include size (auto, 63px);
+	min-width: 260px;
+	@include flex (row, auto);	
+}
+
+.social-media__item{
+	@include size (65px, 63px);
+	@include flex (row, space-around);
+}
+
+.social-media__item_facebook, .social-media__item_twitter, .social-media__item_google{
+	&:before{
+		@include absolute();
+		@include size (1px, 63px);
+		background-color: $light-grey;
+		transform: translate(-33px, 0px);				
+	}
+}
+
+.social-media__item_twitter, .social-media__item_google{
+	&:after{
+		@include absolute();
+		@include size(1px, 63px);
+		background-color: $light-grey;
+		transform: translate(33px, 0px);
+	}
+}
+
+.social-media__icon{
+	@include size(21px, 21px);
+	fill: $footer-dark-grey;
+	transition: 0.3s;
+
+	&:hover{
+		transform: scale(1.2);
+		transition: 0.3s;
+	}
+
+	@media screen and (max-width: $no-animation){
+		&:hover{
+			transform: scale(1, 1);
+		}
+	}
+}	
+
+/* Contact pop-ups - basics */
+.contact-popup{			
+	position: absolute;
+	@include size(226px, 50px);
+	@include font(16px, lighter, $main-grey, $font-light);
+	@include flex(row, space-around);
+	background-color: #ffffff;
+	border: 2px solid $light-grey;
+	border-radius: 5px;	
+	line-height: 140%;
+	z-index: 98;
+
+	visibility: hidden;
+
+	a{
+		@include font(16px, lighter, $main-grey, $font-light);
+	}
+
+	@media screen and (max-width: $no-animation){
+		display: none;
+	}	
+}
+
+.contact-triangle{
+	position: absolute;
+	background-color: #ffffff;
+	@include size(28px, 2px);
+	z-index: 99;
+
+	visibility: hidden;
+	
+	&:before{
+		@include absolute();
+		@include size(2px, 20px);
+		background-color: $light-grey;
+		transform: rotate(-55deg) translate(6px, 3px);
+	}
+
+	&:after{
+		@include absolute();
+		@include size(2px, 20px);
+		background-color: $light-grey;
+		transform: rotate(55deg) translate(9px, -18px);
+	}
+
+	@media screen and (max-width: $no-animation){
+		display: none;
+	}
+}

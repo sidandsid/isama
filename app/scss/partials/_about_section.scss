@@ -1,0 +1,71 @@
+.about-section{	
+	min-height: 510px;
+	@include flex(row, space-between);		
+}
+
+.about-content{
+	@include content-width();
+	@include flex(row, space-between);
+	align-items: baseline;	
+	padding: 30px 0;
+
+	@media screen and (max-width: 1250px){
+		@include flex(column, space-around);			
+	}
+}
+
+.about-box{	
+	width: 525px;
+	@include flex(row, space-between);
+	align-items: flex-start;
+
+	@media screen and (max-width: 640px){
+		width: 100%;
+		justify-content: center;
+	}	
+}	
+
+.about-box_what-about{	
+	@media screen and (max-width: 1250px){
+		margin-bottom: 40px;
+	}
+}		
+
+.about-text{
+	@include size(72%, 100%);
+	text-align: justify;
+	transform: translate(-3%, 5%);	
+}
+
+.about-text__title{
+	@include font(26px, bold, $main-grey, $font-bold);	
+
+	@media screen and (max-width: 640px){
+		text-align: center;
+	}
+}
+
+.about-text__description{
+	@include text();
+	line-height: 150%;
+}
+
+.about-box__icon_lamp{
+	@include size(106px, 113px);
+	@include background('about-image-1.png');
+
+	@media screen and (max-width: 640px){
+		width: 100%;	
+	}
+}
+
+.about-box__icon_tree{
+	@include size(96px, 116px);	
+	@include background('about-image-2.png');	
+	transform: translate(10%, -2%);
+
+	@media screen and (max-width: 640px){
+		width: 100%;	
+		transform: translate(0%, 0%);
+	}
+}
